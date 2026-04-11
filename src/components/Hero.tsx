@@ -19,14 +19,14 @@ export default function Hero() {
             <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
           </span>
           <span className="text-[11px] md:text-xs font-semibold text-zinc-300 tracking-wider uppercase">
-            Accepting New Local Clients
+            Accepting New Clients
           </span>
         </div>
 
         {/* Headline */}
         <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.1] mb-6">
           You always HAZZ-US behind <br className="hidden sm:block" />
-          for <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Local Businesses</span>
+          for <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Your Business</span>
         </h1>
 
         {/* Subheadline */}

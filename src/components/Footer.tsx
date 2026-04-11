@@ -45,7 +45,7 @@ export default function Footer() {
               HAZZ<span className="text-cyan-400">-</span>US
             </Link>
             <p className="text-zinc-400 text-sm md:text-base leading-relaxed max-w-sm font-medium">
-              We design, build, and scale high-performing digital presences for local businesses who value growth over guesswork.
+              We design, build, and scale high-performing digital presences for your business if you value growth over guesswork.
             </p>
           </div>
 
