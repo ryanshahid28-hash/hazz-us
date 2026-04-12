@@ -1,120 +1,113 @@
-import Link from "next/link";
+"use client";
+
+import React from "react";
 import TiltCard from "./TiltCard";
 
 export default function Services() {
   return (
-    // Main Wrapper
-    <section id="services" className="relative w-full max-w-5xl mx-auto px-6 py-24">
+    <section id="services" className="relative w-full max-w-7xl mx-auto px-6 py-24 font-sans text-neutral-50 mb-32">
+
       
-      {/* Section Header */}
-      <div className="mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">
-          What We Do
+      {/* Structural Header */}
+      <div className="mb-16 md:mb-24 text-left">
+        <h2 className="text-4xl font-extrabold tracking-tight md:text-6xl">
+          Our <span className="text-cyan-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]">Services</span>
         </h2>
-        <p className="text-zinc-400 mt-4 text-lg max-w-xl">
-          We strip away the fat and focus on high-impact services that bring local customers straight to your door.
+        <p className="mt-6 max-w-xl text-neutral-400 text-lg md:text-xl">
+          Precision-engineered digital growth systems tailored for time-poor local business titans.
         </p>
       </div>
 
-      {/* Sticky Cards Container */}
-      <div className="relative flex flex-col gap-6 pb-32">
+      {/* Bento Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
-        {/* 1. Large Card (Featured - Web Design) */}
-        <TiltCard className="sticky top-24 md:top-32 w-full bg-zinc-950 border border-zinc-800 rounded-3xl p-8 md:p-12 shadow-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-8 z-10 transition-all">
-          <div className="flex-1 flex gap-6">
-            <span className="text-zinc-800 text-7xl md:text-9xl font-black leading-none select-none">
-              1
-            </span>
-            <div className="mt-2 md:mt-4">
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Web Design
-              </h3>
-              <p className="text-zinc-400 leading-relaxed max-w-xl text-base md:text-lg mb-6">
-                Unleash your brand's potential with a custom, high-converting design. No templates. No bloat. Just pure aesthetics that turn local visitors into paying customers.
+        {/* Card 1: Web Design */}
+        <TiltCard className="col-span-1 lg:col-span-2 group relative overflow-hidden rounded-[2rem] p-[2px] bg-neutral-900 min-h-[380px] shadow-2xl block border border-transparent">
+          {/* Spinning Glow Flow Background */}
+          <div className="absolute top-1/2 left-1/2 h-[200%] w-[200%] -translate-x-1/2 -translate-y-1/2 animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_75%,#0ea5e9_100%)] opacity-30 group-hover:opacity-100 transition-opacity duration-500" />
+          
+          {/* Inner Card Content */}
+          <div className="relative h-full w-full rounded-[calc(2rem-2px)] bg-neutral-950 p-8 md:p-12 backdrop-blur-xl flex flex-col justify-between z-10 border border-neutral-950">
+            <div>
+              <h3 className="mb-4 text-3xl font-bold tracking-tight text-white">Web Design</h3>
+              <p className="text-lg leading-relaxed text-neutral-400 max-w-lg">
+                Sleek, conversion-optimized interfaces that command authority and build instant trust with your local audience.
               </p>
-              <ul className="space-y-3 text-zinc-300 font-medium">
-                 <li className="flex items-center gap-3"><span className="text-zinc-500">+</span> Custom Branding Integration</li>
-                 <li className="flex items-center gap-3"><span className="text-zinc-500">+</span> Mobile-First Experiences</li>
-                 <li className="flex items-center gap-3"><span className="text-zinc-500">+</span> Conversion-Optimized UI</li>
-              </ul>
             </div>
-          </div>
-
-          <div className="shrink-0 w-full md:w-auto mt-6 md:mt-0">
-            <Link 
-              href="#contact" 
-              className="relative z-20 inline-flex items-center justify-center w-full md:w-auto bg-cyan-400 hover:bg-cyan-300 text-zinc-950 font-bold px-8 py-4 rounded-xl transition-all shadow-[0_0_15px_rgba(34,211,238,0.3)] hover:shadow-[0_0_25px_rgba(34,211,238,0.5)]"
-            >
-              Get Started
-            </Link>
+            <button className="relative overflow-hidden rounded-lg bg-neutral-800/50 px-8 py-4 text-sm font-bold text-cyan-400 transition-colors duration-300 hover:bg-cyan-500/10 hover:text-cyan-300 w-max mt-8">
+              Learn More
+            </button>
           </div>
         </TiltCard>
 
-        {/* The Grid for remaining basic cards */}
-        {/* We make this grid sticky as well, so it slides over Card 1 like a deck of cards! */}
-        <div className="sticky top-28 md:top-40 z-20 grid grid-cols-1 md:grid-cols-2 gap-6 transition-all">
+        {/* Card 2: Web Dev */}
+        <TiltCard className="col-span-1 group relative overflow-hidden rounded-[2rem] p-[2px] bg-neutral-900 min-h-[380px] shadow-2xl border border-transparent">
+          <div className="absolute top-1/2 left-1/2 h-[200%] w-[200%] -translate-x-1/2 -translate-y-1/2 animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_75%,#0ea5e9_100%)] opacity-30 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="relative h-full w-full rounded-[calc(2rem-2px)] bg-neutral-950 p-8 md:p-12 backdrop-blur-xl flex flex-col justify-between z-10 border border-neutral-950">
+            <div>
+              <h3 className="mb-4 text-3xl font-bold tracking-tight text-white">Web Development</h3>
+              <p className="text-base leading-relaxed text-neutral-400">
+                High-performance, scalable architectures engineered for speed, security, and seamless mobile interactions.
+              </p>
+            </div>
+            <button className="relative overflow-hidden rounded-lg bg-neutral-800/50 px-8 py-4 text-sm font-bold text-cyan-400 transition-colors duration-300 hover:bg-cyan-500/10 hover:text-cyan-300 w-max mt-8">
+              Learn More
+            </button>
+          </div>
+        </TiltCard>
 
-          {/* 2. Web Development */}
-          <TiltCard className="bg-zinc-950 border border-zinc-800 rounded-3xl p-8 shadow-2xl relative overflow-hidden group">
-            <div className="absolute top-6 left-6 text-zinc-800/40 text-8xl font-black pointer-events-none select-none z-0 transition-transform group-hover:scale-110">2</div>
-            <div className="relative z-10 pl-16">
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-6 transform-gpu group-hover:translate-z-4">Web Development</h3>
-              <ul className="space-y-3 text-sm text-zinc-400 font-medium transform-gpu group-hover:translate-z-2">
-                <li className="flex items-start gap-3"><span className="text-zinc-600 mt-0.5">+</span> Full-Stack Next.js Builds</li>
-                <li className="flex items-start gap-3"><span className="text-zinc-600 mt-0.5">+</span> Blazing Fast Performance</li>
-                <li className="flex items-start gap-3"><span className="text-zinc-600 mt-0.5">+</span> Secure & Scalable Architecture</li>
+        {/* Card 3: SEO Optimization */}
+        <TiltCard className="col-span-1 group relative overflow-hidden rounded-[2rem] p-[2px] bg-neutral-900 min-h-[380px] shadow-2xl border border-transparent">
+          <div className="absolute top-1/2 left-1/2 h-[200%] w-[200%] -translate-x-1/2 -translate-y-1/2 animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_75%,#0ea5e9_100%)] opacity-30 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="relative h-full w-full rounded-[calc(2rem-2px)] bg-neutral-950 p-8 md:p-12 backdrop-blur-xl flex flex-col justify-between z-10 border border-neutral-950">
+            <div>
+              <h3 className="mb-4 text-3xl font-bold tracking-tight text-white">SEO Optimization</h3>
+              <p className="text-base leading-relaxed text-neutral-400">
+                Data-driven organic growth strategies that dominate local search rankings and capture high-intent traffic.
+              </p>
+            </div>
+            <button className="relative overflow-hidden rounded-lg bg-neutral-800/50 px-8 py-4 text-sm font-bold text-cyan-400 transition-colors duration-300 hover:bg-cyan-500/10 hover:text-cyan-300 w-max mt-8">
+              Learn More
+            </button>
+          </div>
+        </TiltCard>
+
+        {/* Card 4: AI Ads (Premium Tech Vibe) */}
+        <TiltCard className="col-span-1 lg:col-span-2 group relative overflow-hidden rounded-[2rem] p-[2px] bg-neutral-900 min-h-[380px] shadow-2xl block border border-transparent">
+          {/* Advanced Multi-color Spinning Glow for Premium Tier */}
+          <div className="absolute top-1/2 left-1/2 h-[200%] w-[200%] -translate-x-1/2 -translate-y-1/2 animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_40%,#8b5cf6_60%,#0ea5e9_100%)] opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+          
+          {/* Inner Layer */}
+          <div className="relative h-full w-full rounded-[calc(2rem-2px)] bg-neutral-950 p-8 md:p-12 backdrop-blur-xl flex flex-col justify-between z-10 border border-neutral-950 overflow-hidden">
+            
+            {/* Subtle inner grid pattern for AI tech feel */}
+            <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_0%,rgba(10,10,10,0.8)_100%),url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+CjxwYXRoIGQ9Ik0gMjAgMCBMIDAgMCAwIDIwIiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4wMykiIHN0cm9rZS13aWR0aD0iMSIvPgo8L3N2Zz4=')] bg-repeat opacity-50 pointer-events-none" />
+
+            <div className="relative z-10">
+              <div className="inline-block px-4 py-1 mb-6 rounded-full border border-violet-500/30 bg-violet-500/10 text-xs font-bold uppercase tracking-widest text-violet-400">
+                Ultimate Tier
+              </div>
+              
+              <h3 className="text-4xl md:text-5xl font-black tracking-tight text-white mb-4">
+                AI Ads Creation
+              </h3>
+              
+              <p className="text-lg md:text-xl text-neutral-400 font-medium max-w-xl mb-8 leading-relaxed">
+                For businesses serious about dominating their local market with laser-targeted, strictly AI-optimized ad campaigns.
+              </p>
+              
+              <ul className="space-y-4 text-neutral-300 font-medium mb-8">
+                <li className="flex items-center gap-3"><span className="text-violet-500 text-xl font-bold">+</span> Everything in standard packages</li>
+                <li className="flex items-center gap-3"><span className="text-violet-500 text-xl font-bold">+</span> Dedicated Campaign Tracking</li>
+                <li className="flex items-center gap-3"><span className="text-violet-500 text-xl font-bold">+</span> Exclusive High-Intent Leads</li>
               </ul>
             </div>
-          </TiltCard>
-
-          {/* 3. AI Ads */}
-          <TiltCard className="bg-zinc-950 border border-zinc-800 rounded-3xl p-8 shadow-2xl relative overflow-hidden group">
-            <div className="absolute top-6 right-6 transform-gpu group-hover:translate-z-6">
-              <span className="bg-gradient-to-r from-purple-500 to-blue-500 text-white text-[10px] uppercase tracking-wider font-bold px-3 py-1 rounded-full shadow-[0_0_10px_rgba(168,85,247,0.4)] relative z-20">New</span>
-            </div>
-            <div className="absolute top-6 left-6 text-zinc-800/40 text-8xl font-black pointer-events-none select-none z-0 transition-transform group-hover:scale-110">3</div>
-            <div className="relative z-10 pl-16">
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-6 transform-gpu group-hover:translate-z-4">AI Ads Creation</h3>
-              <ul className="space-y-3 text-sm text-zinc-400 font-medium transform-gpu group-hover:translate-z-2">
-                <li className="flex items-start gap-3"><span className="text-zinc-600 mt-0.5">+</span> Hyper-Targeted Campaigns</li>
-                <li className="flex items-start gap-3"><span className="text-zinc-600 mt-0.5">+</span> AI-Generated High-Converting Copy</li>
-                <li className="flex items-start gap-3"><span className="text-zinc-600 mt-0.5">+</span> Continuous A/B Testing</li>
-              </ul>
-            </div>
-          </TiltCard>
-
-          {/* 4. SEO Optimization */}
-          <TiltCard className="bg-zinc-950 border border-zinc-800 rounded-3xl p-8 shadow-2xl relative overflow-hidden group">
-            <div className="absolute top-6 left-6 text-zinc-800/40 text-8xl font-black pointer-events-none select-none z-0 transition-transform group-hover:scale-110">4</div>
-            <div className="relative z-10 pl-16">
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-6 transform-gpu group-hover:translate-z-4">SEO Optimization</h3>
-              <ul className="space-y-3 text-sm text-zinc-400 font-medium transform-gpu group-hover:translate-z-2">
-                <li className="flex items-start gap-3"><span className="text-zinc-600 mt-0.5">+</span> Local SEO Domination</li>
-                <li className="flex items-start gap-3"><span className="text-zinc-600 mt-0.5">+</span> On-page & Technical Audits</li>
-                <li className="flex items-start gap-3"><span className="text-zinc-600 mt-0.5">+</span> High-Intent Keyword Strategy</li>
-              </ul>
-            </div>
-          </TiltCard>
-
-          {/* 5. Social Media Management */}
-          <TiltCard className="bg-zinc-950 border border-zinc-800 rounded-3xl p-8 shadow-2xl relative overflow-hidden group">
-            <div className="absolute top-6 left-6 text-zinc-800/40 text-8xl font-black pointer-events-none select-none z-0 transition-transform group-hover:scale-110">5</div>
-            <div className="relative z-10 pl-16">
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-6 transform-gpu group-hover:translate-z-4">Social Media Management</h3>
-              <ul className="space-y-3 text-sm text-zinc-400 font-medium transform-gpu group-hover:translate-z-2">
-                <li className="flex items-start gap-3"><span className="text-zinc-600 mt-0.5">+</span> Strategic Content Planning</li>
-                <li className="flex items-start gap-3"><span className="text-zinc-600 mt-0.5">+</span> Community Engagement</li>
-                <li className="flex items-start gap-3"><span className="text-zinc-600 mt-0.5">+</span> Organic Follower Growth</li>
-              </ul>
-            </div>
-          </TiltCard>
-
-        </div>
-
-        {/* Empty space block just to force scrolling so you can test the sticky effect locally */}
-        <div className="h-[50vh] flex items-center justify-center border border-dashed border-zinc-800/30 rounded-3xl mt-8 sticky top-[50%] z-0">
-            <p className="text-zinc-600 font-mono text-sm opacity-50">Keep scrolling to see the stack effect</p>
-        </div>
+            
+            <button className="relative z-10 bg-violet-600 text-white font-bold py-4 px-10 text-lg rounded-xl shadow-[0_0_20px_rgba(139,92,246,0.3)] hover:bg-violet-500 hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] transition-all w-full md:w-max uppercase tracking-wider mt-auto border border-violet-400/50">
+              Transform Your Growth
+            </button>
+          </div>
+        </TiltCard>
 
       </div>
     </section>
