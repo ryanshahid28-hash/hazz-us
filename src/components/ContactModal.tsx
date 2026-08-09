@@ -94,10 +94,10 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               Start A Project
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-              Let's Talk About Your Next Big Move
+              Let&apos;s Talk About Your Next Big Move
             </h2>
             <p className="text-sm text-zinc-400 mt-2 font-medium">
-              Fill out the form below and we'll get back to you within 24 hours.
+              Fill out the form below and we&apos;ll get back to you within 24 hours.
             </p>
           </div>
 
@@ -105,7 +105,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           <form onSubmit={handleSubmit} className="space-y-5">
             {submitStatus === "success" && (
               <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-emerald-400 text-xs font-semibold text-center">
-                Message sent successfully! We'll be in touch soon.
+                Message sent successfully! We&apos;ll be in touch soon.
               </div>
             )}
             {submitStatus === "error" && (

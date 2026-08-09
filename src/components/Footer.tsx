@@ -27,7 +27,7 @@ export default function Footer({ onOpenContact }: FooterProps) {
             onClick={onOpenContact}
             className="relative z-10 inline-block bg-cyan-400 hover:bg-cyan-300 text-zinc-950 text-xl font-black px-12 py-5 rounded-full transition-all shadow-[0_0_30px_rgba(34,211,238,0.5)] hover:shadow-[0_0_50px_rgba(34,211,238,0.8)] hover:scale-105 cursor-pointer"
           >
-            Let's Talk
+            Let&apos;s Talk
           </button>
         </div>
       </div>
