@@ -31,10 +31,11 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         setSubmitStatus("success");
         (e.target as HTMLFormElement).reset();
       } else {
+        console.error("Web3Forms error response:", result);
         setSubmitStatus("error");
       }
     } catch (error) {
-      console.error("Form submission error:", error);
+      console.error("Form submission network/fetch error:", error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -122,7 +123,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 <input
                   type="text"
                   id="fullName"
-                  name="fullName"
+                  name="name"
                   required
                   placeholder="John Doe"
                   className="w-full bg-zinc-950/80 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all"
@@ -224,7 +225,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               </label>
               <textarea
                 id="projectDetails"
-                name="projectDetails"
+                name="message"
                 required
                 rows={4}
                 placeholder="Tell us about your goals, timelines, and requirements..."
