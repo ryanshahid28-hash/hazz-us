@@ -3,7 +3,11 @@
 import Link from "next/link";
 import { useState } from "react";
 
-export default function Navbar() {
+interface NavbarProps {
+  onOpenContact?: () => void;
+}
+
+export default function Navbar({ onOpenContact }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -34,12 +38,13 @@ export default function Navbar() {
 
         {/* Desktop CTA Button */}
         <div className="hidden md:block">
-          <Link 
-            href="#contact" 
-            className="bg-cyan-400 hover:bg-cyan-300 text-zinc-950 text-sm font-bold px-6 py-2.5 rounded-full transition-all shadow-[0_0_15px_rgba(34,211,238,0.4)] hover:shadow-[0_0_25px_rgba(34,211,238,0.6)]"
+          <button 
+            type="button"
+            onClick={onOpenContact}
+            className="bg-cyan-400 hover:bg-cyan-300 text-zinc-950 text-sm font-bold px-6 py-2.5 rounded-full transition-all shadow-[0_0_15px_rgba(34,211,238,0.4)] hover:shadow-[0_0_25px_rgba(34,211,238,0.6)] cursor-pointer"
           >
             Get Started
-          </Link>
+          </button>
         </div>
 
         {/* Mobile Menu Toggle Dropdown Button */}
@@ -70,9 +75,16 @@ export default function Navbar() {
           <Link href="#about" className="text-zinc-300 hover:text-cyan-400 font-medium p-2 transition-colors" onClick={() => setIsOpen(false)}>
             About
           </Link>
-          <Link href="#contact" className="bg-cyan-400 text-zinc-950 text-center font-bold px-6 py-3 rounded-xl mt-2 shadow-[0_0_15px_rgba(34,211,238,0.3)]" onClick={() => setIsOpen(false)}>
+          <button 
+            type="button"
+            className="bg-cyan-400 text-zinc-950 text-center font-bold px-6 py-3 rounded-xl mt-2 shadow-[0_0_15px_rgba(34,211,238,0.3)] cursor-pointer"
+            onClick={() => {
+              setIsOpen(false);
+              onOpenContact?.();
+            }}
+          >
             Get Started
-          </Link>
+          </button>
         </div>
       )}
     </nav>

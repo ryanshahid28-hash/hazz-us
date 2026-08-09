@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-export default function Hero() {
+interface HeroProps {
+  onOpenContact?: () => void;
+}
+
+export default function Hero({ onOpenContact }: HeroProps) {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden bg-zinc-950">
       
@@ -36,13 +40,14 @@ export default function Hero() {
 
         {/* Call To Actions */}
         <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto justify-center">
-          <Link 
-            href="#contact" 
-            className="w-full sm:w-auto bg-cyan-400 hover:bg-cyan-300 text-zinc-950 text-sm md:text-base font-bold px-8 py-3.5 rounded-full transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)] flex items-center justify-center gap-2"
+          <button 
+            type="button"
+            onClick={onOpenContact}
+            className="w-full sm:w-auto bg-cyan-400 hover:bg-cyan-300 text-zinc-950 text-sm md:text-base font-bold px-8 py-3.5 rounded-full transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)] flex items-center justify-center gap-2 cursor-pointer"
           >
             Get Started
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-          </Link>
+          </button>
           <Link 
             href="#services" 
             className="w-full sm:w-auto bg-transparent hover:bg-zinc-900 text-white border border-zinc-700 hover:border-zinc-500 text-sm md:text-base font-semibold px-8 py-3.5 rounded-full transition-all text-center"
@@ -50,17 +55,6 @@ export default function Hero() {
             View Our Services
           </Link>
         </div>
-        
-        {/* Social Proof (Minimal Placeholder) */}
-        <div className="mt-20 pt-8 border-t border-zinc-800/50 w-full flex flex-col items-center">
-          <p className="text-xs text-zinc-500 font-semibold mb-6 tracking-widest uppercase">Trusted by businesses in your city</p>
-          <div className="flex gap-8 md:gap-16 opacity-40 grayscale hover:grayscale-0 transition-opacity duration-300 flex-wrap justify-center items-center">
-             <span className="text-xl md:text-2xl font-black italic tracking-tighter uppercase">Little Arabia</span>
-             <span className="text-xl md:text-2xl font-bold tracking-widest font-serif text-cyan-400">Lume Leafs</span>
-             <span className="text-xl md:text-2xl font-semibold tracking-wide text-zinc-300 uppercase">Golden Fancy</span>
-          </div>
-        </div>
-
       </div>
     </section>
   );
