@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -8,6 +8,39 @@ interface ContactModalProps {
 }
 
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    const formData = new FormData(e.currentTarget);
+    // Access key securely pulled from environment variables
+    formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSubmitStatus("success");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   // Close modal on 'Escape' key press & manage body scroll
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -69,7 +102,17 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           </div>
 
           {/* Contact Form */}
-          <form action="" onSubmit={(e) => e.preventDefault()} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-5">
+            {submitStatus === "success" && (
+              <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-emerald-400 text-xs font-semibold text-center">
+                Message sent successfully! We'll be in touch soon.
+              </div>
+            )}
+            {submitStatus === "error" && (
+              <div className="p-3 bg-rose-500/10 border border-rose-500/30 rounded-xl text-rose-400 text-xs font-semibold text-center">
+                Something went wrong. Please check your details and try again.
+              </div>
+            )}
             {/* Row 1: Name & Email */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
@@ -194,9 +237,10 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-cyan-400 hover:bg-cyan-300 text-zinc-950 font-extrabold text-base py-4 rounded-xl transition-all shadow-[0_0_25px_rgba(34,211,238,0.3)] hover:shadow-[0_0_35px_rgba(34,211,238,0.6)] focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                disabled={isSubmitting}
+                className="w-full bg-cyan-400 hover:bg-cyan-300 disabled:opacity-50 disabled:cursor-not-allowed text-zinc-950 font-extrabold text-base py-4 rounded-xl transition-all shadow-[0_0_25px_rgba(34,211,238,0.3)] hover:shadow-[0_0_35px_rgba(34,211,238,0.6)] focus:outline-none focus:ring-2 focus:ring-cyan-400"
               >
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
 
               {/* Backup Mobile Cancel Button */}
