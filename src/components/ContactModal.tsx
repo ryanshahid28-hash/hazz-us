@@ -10,15 +10,19 @@ interface ContactModalProps {
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus("idle");
+    setErrorMessage("");
 
     const formData = new FormData(e.currentTarget);
-    // Access key securely pulled from environment variables
-    formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "");
+    // Access key pulled from env with reliable fallback
+    const apiKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "56c41b6d-22a3-420e-b1b7-0af3f351330f";
+    formData.append("access_key", apiKey);
+    formData.append("subject", "New Project Inquiry - Hazz US");
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -32,10 +36,12 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         (e.target as HTMLFormElement).reset();
       } else {
         console.error("Web3Forms error response:", result);
+        setErrorMessage(result.message || "Something went wrong. Please check your details and try again.");
         setSubmitStatus("error");
       }
     } catch (error) {
       console.error("Form submission network/fetch error:", error);
+      setErrorMessage("Network error. Please check your connection and try again.");
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -111,7 +117,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             )}
             {submitStatus === "error" && (
               <div className="p-3 bg-rose-500/10 border border-rose-500/30 rounded-xl text-rose-400 text-xs font-semibold text-center">
-                Something went wrong. Please check your details and try again.
+                {errorMessage || "Something went wrong. Please check your details and try again."}
               </div>
             )}
             {/* Row 1: Name & Email */}
